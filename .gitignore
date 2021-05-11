@@ -1,0 +1,24 @@
+.ipynb_checkpoints
+__pycache__
+_build/
+build/
+dist/
+*.pdf
+konturerkennung
+doc/notes/
+.vscode/
+doc/_autosummary/
+tutorial/*.csv
+tutorial/*.gv
+imgreg.egg-info/
+
+# pip
+*ivreg.egg-info/
+
+# testing
+.coverage
+*htmlcov/
+
+dependencies_logpolar.gv
+dependencies_radon.gv
+dependencies_validator.gv

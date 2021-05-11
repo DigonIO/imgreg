@@ -1,0 +1,162 @@
+before_script:
+  - python --version
+  - pip install -r requirements.txt
+  - pip install -e .
+
+stages:
+  - linting
+  - documentation
+  - testing
+  - release
+
+#### linting ####
+pylint_3_9_5:
+  stage: linting
+  image: "python:3.9.5"
+  script:
+  - pylint imgreg
+  allow_failure: true
+
+pylint_3_8_10:
+  stage: linting
+  image: "python:3.8.10"
+  script:
+  - pylint imgreg
+  allow_failure: true
+
+pylint_3_7_10:
+  stage: linting
+  image: "python:3.7.10"
+  script:
+  - pylint imgreg
+  allow_failure: true
+
+mypy_3_9_5:
+  stage: linting
+  image: "python:3.9.5"
+  script:
+  - mypy imgreg
+  allow_failure: true
+
+mypy_3_8_10:
+  stage: linting
+  image: "python:3.8.10"
+  script:
+  - mypy imgreg
+  allow_failure: true
+
+mypy_3_7_10:
+  stage: linting
+  image: "python:3.7.10"
+  script:
+  - mypy imgreg
+  allow_failure: true
+
+pydocstyle_3_9_5:
+  stage: linting
+  image: "python:3.9.5"
+  script:
+  - pydocstyle imgreg
+  allow_failure: true
+
+pydocstyle_3_8_10:
+  stage: linting
+  image: "python:3.8.10"
+  script:
+  - pydocstyle imgreg
+  allow_failure: true
+
+pydocstyle_3_7_10:
+  stage: linting
+  image: "python:3.7.10"
+  script:
+  - pydocstyle imgreg
+  allow_failure: true
+
+pydoctest_3_9_5:
+  stage: linting
+  image: "python:3.9.5"
+  script:
+  - pytest --doctest-modules imgreg/
+  allow_failure: true
+
+pydoctest_3_8_10:
+  stage: linting
+  image: "python:3.8.10"
+  script:
+  - pytest --doctest-modules imgreg/
+  allow_failure: true
+
+pydoctest_3_7_10:
+  stage: linting
+  image: "python:3.7.10"
+  script:
+  - pytest --doctest-modules imgreg/
+  allow_failure: true
+
+#### documentation ####
+doc_3_9_5:
+  stage: documentation
+  image: "python:3.9.5"
+  script:
+  - sphinx-build -b html doc/ doc/_build/html
+
+doc_3_8_10:
+  stage: documentation
+  image: "python:3.8.10"
+  script:
+  - sphinx-build -b html doc/ doc/_build/html
+
+doc_3_7_10:
+  stage: documentation
+  image: "python:3.7.10"
+  script:
+  - sphinx-build -b html doc/ doc/_build/html
+
+#### testing ####
+pytest_3_9_5:
+  stage: testing
+  image: "python:3.9.5"
+  script:
+  - pytest --cov=imgreg/ tests/
+
+pytest_3_8_10:
+  stage: testing
+  image: "python:3.8.10"
+  script:
+  - pytest --cov=imgreg/ tests/
+
+pytest_3_7_10:
+  stage: testing
+  image: "python:3.7.10"
+  script:
+  - pytest --cov=imgreg/ tests/
+
+bandit_3_9_5:
+  stage: testing
+  image: "python:3.9.5"
+  script:
+  - bandit -r imgreg
+
+bandit_3_8_10:
+  stage: testing
+  image: "python:3.8.10"
+  script:
+  - bandit -r imgreg
+
+bandit_3_7_10:
+  stage: testing
+  image: "python:3.7.10"
+  script:
+  - bandit -r imgreg
+
+#### release ####
+pypi:
+  image: python:3.9.5
+  stage: release
+  script:
+    - pip install twine
+    - python setup.py sdist bdist_wheel
+    - twine upload dist/*
+  only:
+    - tags

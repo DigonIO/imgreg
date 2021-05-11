@@ -1,0 +1,7 @@
+imgreg/data/mod_img.jpg filter=lfs diff=lfs merge=lfs -text
+imgreg/data/ref_img.jpg filter=lfs diff=lfs merge=lfs -text
+doc/_assets/angle.png filter=lfs diff=lfs merge=lfs -text
+doc/_assets/graphviz-95712dd0db77a44b8fed74946896cee539b4b9fd.svg filter=lfs diff=lfs merge=lfs -text
+doc/_assets/NormRel_L2.png filter=lfs diff=lfs merge=lfs -text
+doc/_assets/rec_ref.png filter=lfs diff=lfs merge=lfs -text
+doc/_assets/ref_mod.png filter=lfs diff=lfs merge=lfs -text
