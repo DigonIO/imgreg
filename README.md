@@ -7,6 +7,7 @@
 [![license](https://img.shields.io/pypi/l/imgreg)](https://gitlab.com/DigonIO/imgreg/-/blob/master/LICENSE)
 [![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
 [![docs](https://readthedocs.org/projects/imgreg/badge/?version=latest)](https://imgreg.readthedocs.io/en/latest/)
+[![Downloads](https://pepy.tech/badge/imgreg)](https://pepy.tech/project/imgreg)
 
 An image registration library for python including a simple interface for building new models. Currently two image registration models for linear transformations based on scikit have been implemented as part of a toolchain in the context of particle image velocimetry (PIV). Tested for Python 3.7 to Python 3.9.
 
