@@ -5,7 +5,7 @@ with open("README.md", encoding="utf-8") as f:
 
 setup(
     name="imgreg",
-    version="1.0.2",
+    version="1.0.3",
     description="Image registration models with extendable interfaces.",
     long_description=LONG_DESCRIPTION,
     long_description_content_type="text/markdown",

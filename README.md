@@ -2,6 +2,7 @@
 
 [![pkgversion](https://img.shields.io/pypi/v/imgreg)](https://pypi.org/project/imgreg/)
 [![versionsupport](https://img.shields.io/pypi/pyversions/imgreg)](https://pypi.org/project/imgreg/)
+[![repository](https://img.shields.io/badge/src-GitLab-orange)](https://gitlab.com/DigonIO/imgreg)
 [![pipeline status](https://gitlab.com/DigonIO/imgreg/badges/master/pipeline.svg)](https://gitlab.com/DigonIO/imgreg/-/pipelines)
 [![coverage report](https://gitlab.com/DigonIO/imgreg/badges/master/coverage.svg)](https://gitlab.com/DigonIO/imgreg/-/pipelines)
 [![license](https://img.shields.io/pypi/l/imgreg)](https://gitlab.com/DigonIO/imgreg/-/blob/master/LICENSE)
