@@ -1,0 +1,1 @@
+The LogPolarSolver of this library is based an example in the [scikit-image doc](https://scikit-image.org/docs/stable/auto_examples/registration/plot_register_rotation.html#sphx-glr-auto-examples-registration-plot-register-rotation-py). The jupyter-notebooks in this directory have directly been derived from these examples and are licensed under the scikit license (modified BSD).
