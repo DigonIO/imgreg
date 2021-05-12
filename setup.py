@@ -5,7 +5,7 @@ with open("README.md", encoding="utf-8") as f:
 
 setup(
     name="imgreg",
-    version="1.0.1",
+    version="1.0.2",
     description="Image registration models with extendable interfaces.",
     long_description=LONG_DESCRIPTION,
     long_description_content_type="text/markdown",
@@ -22,11 +22,11 @@ setup(
         "imgreg.models.radon",
         "imgreg.models.validator",
     ],
-    keywords="image reg",
+    keywords="image registration data analysis science",
     package_data={"imgreg": ["data/ref_img.jpg", "data/mod_img.jpg"]},
     include_package_data=True,
     install_requires=[
-        "numpy==1.20.2",
+        "numpy==1.20.3",
         "scipy==1.6.3",
         "scikit-image==0.18.1",
         "matplotlib==3.4.1",
@@ -50,4 +50,5 @@ setup(
         "Operating System :: POSIX",
     ],
     zip_safe=False,
+    url="https://gitlab.com/DigonIO/imgreg",
 )

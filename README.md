@@ -1,7 +1,12 @@
 # imgreg
 
-[![pipeline status](https://gitlab.com/DigonIO/imgreg/badges/master/pipeline.svg)](https://gitlab.com/DigonIO/imgreg/-/commits/master)
-[![coverage report](https://gitlab.com/DigonIO/imgreg/badges/master/coverage.svg)](https://gitlab.com/DigonIO/imgreg/-/commits/master)
+[![pkgversion](https://img.shields.io/pypi/v/imgreg)](https://pypi.org/project/imgreg/)
+[![versionsupport](https://img.shields.io/pypi/pyversions/imgreg)](https://pypi.org/project/imgreg/)
+[![pipeline status](https://gitlab.com/DigonIO/imgreg/badges/master/pipeline.svg)](https://gitlab.com/DigonIO/imgreg/-/pipelines)
+[![coverage report](https://gitlab.com/DigonIO/imgreg/badges/master/coverage.svg)](https://gitlab.com/DigonIO/imgreg/-/pipelines)
+[![license](https://img.shields.io/pypi/l/imgreg)](https://gitlab.com/DigonIO/imgreg/-/blob/master/LICENSE)
+[![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
+[![docs](https://readthedocs.org/projects/imgreg/badge/?version=latest)](https://imgreg.readthedocs.io/en/latest/)
 
 An image registration library for python including a simple interface for building new models. Currently two image registration models for linear transformations based on scikit have been implemented as part of a toolchain in the context of particle image velocimetry (PIV). Tested for Python 3.7 to Python 3.9.
 
@@ -20,19 +25,23 @@ An image registration library for python including a simple interface for buildi
 
 ## Installation
 
+imgreg is directly available from [pypi](https://pypi.org/project/imgreg/):
+
 ```bash
 pip install imgreg
 ```
 
-or clone the repository, and run:
+alternatively clone the [repository](https://gitlab.com/DigonIO/imgreg), and install with:
 
 ```bash
+git clone https://gitlab.com/DigonIO/imgreg.git
+cd imgreg
 python setup.py install
 ```
 
 ## Examples
 
-The following example give a short introduction into the available models. For further reading the directory `doc/tutorial` provides a good starting point. The full documentation can be generated using `sphinx`.
+The following example give a short introduction into the available models. For further reading the directory [`doc/tutorial`](https://gitlab.com/DigonIO/imgreg/-/tree/master/doc/tutorial) provides a good starting point. The full documentation can be generated using [sphinx](https://www.sphinx-doc.org/en/master/).
 
 ### Recover the rotation and translation between two images
 
@@ -242,11 +251,11 @@ ras.dot_graph(dot_args_box_img_func)
 
 ## Tutorials
 
-Further interactive examples are available as [jupyter-notebooks](https://jupyter.org/) in `doc/tutorial`.
+Further interactive examples are available as [jupyter-notebooks](https://jupyter.org/) in [`doc/tutorial`](https://gitlab.com/DigonIO/imgreg/-/tree/master/doc/tutorial).
 
 ## Documentation
 
-The API documentation can be generated using Sphinx with [numpydoc](https://numpydoc.readthedocs.io/en/latest/format.html) formatting. To build, run:
+The API documentation can either be viewed [online](https://imgreg.readthedocs.io/en/latest/) or be generated using Sphinx with [numpydoc](https://numpydoc.readthedocs.io/en/latest/format.html) formatting. To build, run:
 
 ```bash
 sphinx-build -b html doc/ doc/_build/html
@@ -254,7 +263,7 @@ sphinx-build -b html doc/ doc/_build/html
 
 ## Testing
 
-To run all tests and to generate a coverage report run:
+Testing is done using [pytest](https://pypi.org/project/pytest/). With [pytest-cov](https://pypi.org/project/pytest-cov/) and [coverage](https://pypi.org/project/coverage/) a report for the tests can be generated with:
 
 ```bash
 pytest --cov=imgreg/ tests/
