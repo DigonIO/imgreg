@@ -9,7 +9,7 @@ Welcome to the documentation!
 
 This code implements an image processing library intended for batch processing of image registration algorithms.
 
-.. _Source Code: ssh://git@git.uni-wuppertal.de:fpreiss/pyproject.git
+.. _Source Code: https://gitlab.com/DigonIO/imgreg.git
 
 .. toctree::
     :maxdepth: 3

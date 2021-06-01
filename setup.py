@@ -5,12 +5,12 @@ with open("README.md", encoding="utf-8") as f:
 
 setup(
     name="imgreg",
-    version="1.0.3",
+    version="1.0.4",
     description="Image registration models with extendable interfaces.",
     long_description=LONG_DESCRIPTION,
     long_description_content_type="text/markdown",
     author="Fabian A. Preiss, Jendrik A. Potyka",
-    author_email="devops@digon.io",
+    author_email="devops@digon.io, devops@digon.io",
     license="GPLv3",
     packages=[
         "imgreg",
@@ -25,6 +25,7 @@ setup(
     keywords="image registration data analysis science",
     package_data={"imgreg": ["data/ref_img.jpg", "data/mod_img.jpg"]},
     include_package_data=True,
+    test_suite="pytest",
     install_requires=[
         "numpy==1.20.3",
         "scipy==1.6.3",
@@ -42,13 +43,20 @@ setup(
         "Programming Language :: Python :: 3.7",
         "Programming Language :: Python :: 3.8",
         "Programming Language :: Python :: 3.9",
+        "Programming Language :: Python :: Implementation :: CPython",
         "Topic :: Scientific/Engineering",
         "Topic :: Scientific/Engineering :: Image Processing",
         "Topic :: Scientific/Engineering :: Visualization",
         "Topic :: Software Development :: Libraries",
         "Operating System :: Unix",
         "Operating System :: POSIX",
+        "Typing :: Typed",
     ],
     zip_safe=False,
     url="https://gitlab.com/DigonIO/imgreg",
+    project_urls={
+        "Documentation": "https://imgreg.readthedocs.io/en/latest/",
+        "Source Code": "https://gitlab.com/DigonIO/imgreg",
+        "Bug Tracker": "https://gitlab.com/DigonIO/imgreg/-/issues",
+    },
 )

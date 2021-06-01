@@ -1,5 +1,5 @@
 """
-A solver for angle selection
+Angle selection matching based on image matching.
 
 Author: Fabian A. Preiss
 """
@@ -38,12 +38,12 @@ class AngleSelect(Solver):
         The input image (one color channel only).
     ref_img : numpy.ndarray
         The reference image (one color channel only).
-    angle_a : float
-        Angle choice a in degrees
-    angle_b : float
-        Angle choice b in degrees
+    angle_a, angle_b : float
+        Candidate angles A and B in degrees
     upsampling : int
-        Upsampling factor. 1 => no upsampling, 20 => precision to 1/20 of a pixel.
+        Upsampling factor.
+
+        1 => no upsampling, 20 => precision to 1/20 of a pixel.
 
     Notes
     -----

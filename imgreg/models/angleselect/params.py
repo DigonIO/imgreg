@@ -63,7 +63,7 @@ class AngleAParam(Parameter):
 
 class AngleBParam(Parameter):
     """
-    Candidate Angle A.
+    Candidate Angle B.
 
     Attributes
     ----------
@@ -77,7 +77,9 @@ class AngleBParam(Parameter):
 
 class UpsamplingParam(Parameter):
     """
-    Upsampling factor. 1 => no upsampling, 20 => precision to 1/20 of a pixel.
+    Upsampling factor.
+
+    1 => no upsampling, 20 => precision to 1/20 of a pixel.
 
     Attributes
     ----------
@@ -94,7 +96,7 @@ class UpsamplingParam(Parameter):
 
 class RotAParam(ImageParameter):
     """
-    Image Rotated A.
+    Image Rotated by Angle A.
 
     Attributes
     ----------
@@ -125,7 +127,7 @@ class RotAParam(ImageParameter):
 
 class RotBParam(ImageParameter):
     """
-    Image Rotated B.
+    Image Rotated by Angle B.
 
     Attributes
     ----------
@@ -222,7 +224,7 @@ class TranslationBParam(Parameter):
 
 class RotTrAParam(ImageParameter):
     """
-    Rotation, and translation recovered image.
+    Rotation, and translation recovered image A.
 
     Attributes
     ----------
@@ -253,7 +255,7 @@ class RotTrAParam(ImageParameter):
 
 class RotTrBParam(ImageParameter):
     """
-    Rotation, and translation recovered image.
+    Rotation, and translation recovered image B.
 
     Attributes
     ----------
@@ -284,7 +286,7 @@ class RotTrBParam(ImageParameter):
 
 class SelectorParam(Parameter):
     """
-    Return True, if A matches better than B
+    True, if A matches better than B
 
     Attributes
     ----------
@@ -313,11 +315,12 @@ class SelectorParam(Parameter):
 
 class RecoveredRotationParam(Parameter):
     """
-    The recovered rotation angle and error between the modified and reference image.
+    Recovered rotation angle and error between the modified and reference image.
 
     Notes
     -----
-    The errors are a lower estimate under ideal assumptions and can be much larger depending on the data.
+    The errors are a lower estimate under ideal assumptions and can be much
+    larger depending on the data.
 
     Attributes
     ----------

@@ -1,5 +1,6 @@
 before_script:
   - python --version
+  - python secrets.py
   - pip install -r requirements.txt
   - pip install -e .
 
@@ -73,27 +74,6 @@ pydocstyle_3_7_10:
   - pydocstyle imgreg
   allow_failure: true
 
-pydoctest_3_9_5:
-  stage: linting
-  image: "python:3.9.5"
-  script:
-  - pytest --doctest-modules imgreg/
-  allow_failure: true
-
-pydoctest_3_8_10:
-  stage: linting
-  image: "python:3.8.10"
-  script:
-  - pytest --doctest-modules imgreg/
-  allow_failure: true
-
-pydoctest_3_7_10:
-  stage: linting
-  image: "python:3.7.10"
-  script:
-  - pytest --doctest-modules imgreg/
-  allow_failure: true
-
 #### documentation ####
 doc_3_9_5:
   stage: documentation
@@ -114,6 +94,27 @@ doc_3_7_10:
   - sphinx-build -b html doc/ doc/_build/html
 
 #### testing ####
+pydoctest_3_9_5:
+  stage: testing
+  image: "python:3.9.5"
+  script:
+  - pytest --doctest-modules imgreg/
+  allow_failure: true
+
+pydoctest_3_8_10:
+  stage: testing
+  image: "python:3.8.10"
+  script:
+  - pytest --doctest-modules imgreg/
+  allow_failure: true
+
+pydoctest_3_7_10:
+  stage: testing
+  image: "python:3.7.10"
+  script:
+  - pytest --doctest-modules imgreg/
+  allow_failure: true
+
 pytest_3_9_5:
   stage: testing
   image: "python:3.9.5"

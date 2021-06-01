@@ -3,7 +3,7 @@ import matplotlib.pyplot as plt
 import imgreg.data as data
 from imgreg.util.methods import ImageMethods
 
-img = np.array(data.ref_img())
+img = np.array(data.mod_img())
 
 # Compute the sinogram using the radon transform
 sinogram = ImageMethods.sinogram(img)

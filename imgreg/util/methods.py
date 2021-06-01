@@ -3,14 +3,14 @@ Convenience functions for registration related image methods
 
 Author: Fabian A. Preiss.
 """
-from typing import Dict, Hashable, Sequence, Tuple, cast, Optional
+from typing import Dict, Hashable, Optional, Sequence, Tuple, cast
 
 import numpy as np
 from numpy.linalg import norm
 from scipy.fftpack import fft2, fftshift
 from skimage.filters import difference_of_gaussians, window
 from skimage.registration import phase_cross_correlation
-from skimage.transform import AffineTransform, warp, warp_polar, radon
+from skimage.transform import AffineTransform, radon, warp, warp_polar
 
 
 class ImageMethods:

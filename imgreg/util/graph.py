@@ -3,10 +3,8 @@ Convenience functions for directed acyclic graphs
 
 Author: Fabian A. Preiss.
 """
-from typing import Optional, Callable, Dict, Set, Hashable
 import itertools
-from graphviz import Digraph
-from imgreg.util.params import Parameter
+from typing import Dict, Hashable, Set
 
 
 class DAGraph:
@@ -24,7 +22,7 @@ class DAGraph:
 
     Parameters
     ----------
-    vertex_parent_dict : dict[str, set[str]]
+    vertex_parent_dict : dict[str, set[Hashable]]
         A dictionary mapping each vertex to all of its parents.
         It is assumed, that the input is a directed acyclic graph (connected
         or disconnected). Cycle Detection is not performed on the input.

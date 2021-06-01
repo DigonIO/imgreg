@@ -8,8 +8,9 @@ from enum import Enum
 from typing import Dict, Optional
 
 import numpy as np
-from imgreg.util.methods import ImageMethods
+
 from imgreg.models.validator.enums import ValidatorParams
+from imgreg.util.methods import ImageMethods
 from imgreg.util.params import ImageParameter, Parameter
 
 # Root Parameters

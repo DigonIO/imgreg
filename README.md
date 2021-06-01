@@ -43,7 +43,7 @@ python setup.py install
 
 ## Examples
 
-The following example give a short introduction into the available models. For further reading the directory [`doc/tutorial`](https://gitlab.com/DigonIO/imgreg/-/tree/master/doc/tutorial) provides a good starting point. The full documentation can be generated using [sphinx](https://www.sphinx-doc.org/en/master/).
+The following examples give a short introduction into the available models. For further reading the directory [`doc/tutorial`](https://gitlab.com/DigonIO/imgreg/-/tree/master/doc/tutorial) provides a good starting point. The full documentation is available [online](https://imgreg.readthedocs.io/en/latest/).
 
 ### Recover the rotation and translation between two images
 
@@ -98,7 +98,7 @@ lps.display([lps.RECOVERED_ROT_SCALE_TR_IMG, lps.REF_IMG])
 
 ### Batch image processing
 
-First import the required modules (here we use less general domain specific `RadonSolver` model, if not suitable for your application, repace with the `LogPolarSolver` as in the previous example):
+First import the required modules (here we use the less general domain specific `RadonSolver` model, if not suitable for your application, repace with the `LogPolarSolver` as in the previous example):
 
 ```python
 import os
@@ -243,10 +243,9 @@ The implemented models differ in some of the internal parameters. As the constru
 
 ```python
 from imgreg.models.radon import RadonSolver
-from imgreg.util.graph import dot_args_box_img_func
 
 ras=RadonSolver()
-ras.dot_graph(dot_args_box_img_func)
+ras.dot_graph()
 ```
 
 ![A dependency graph representation of the RadonSolver](https://gitlab.com/DigonIO/imgreg/-/raw/master/doc/_assets/graphviz-95712dd0db77a44b8fed74946896cee539b4b9fd.svg)

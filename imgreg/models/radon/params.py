@@ -1,5 +1,5 @@
 """
-Module implementing the parameter classes for the radon Model
+Module implementing the parameter classes for the Radon Model
 
 Author: Fabian A. Preiss
 """
@@ -8,11 +8,12 @@ from enum import Enum
 from typing import Dict, Optional, cast
 
 import numpy as np
-from imgreg.util.methods import ImageMethods
-from imgreg.models.radon.enums import RadonParams
-from imgreg.util.params import ImageParameter, Parameter
 from skimage.registration import phase_cross_correlation
+
 from imgreg.models.angleselect import AngleSelect, AngleSelectParams
+from imgreg.models.radon.enums import RadonParams
+from imgreg.util.methods import ImageMethods
+from imgreg.util.params import ImageParameter, Parameter
 
 # Root Parameters
 
@@ -230,7 +231,7 @@ class RotationCandidateParam(Parameter):
 
 
 class AngleSelectParam(Parameter):
-    """A solver model for angle selection"""
+    """A solver model for angle selection."""
 
     def __init__(self, parent_parameters, angle_select: Optional[AngleSelect] = None):
         super().__init__(

@@ -5,14 +5,15 @@ Author: Fabian A. Preiss
 """
 
 from enum import Enum
-from typing import Dict, Hashable, Optional, cast, Tuple
+from typing import Dict, Hashable, Optional, Tuple, cast, Type, Any
 
 import numpy as np
-from imgreg.util.methods import ImageMethods
-from imgreg.models.logpolar.enums import LogPolParams
-from imgreg.util.params import ImageParameter, Parameter
 from skimage.registration import phase_cross_correlation
 from skimage.transform import AffineTransform
+
+from imgreg.models.logpolar.enums import LogPolParams
+from imgreg.util.methods import ImageMethods
+from imgreg.util.params import ImageParameter, Parameter
 
 # Root Parameters
 
@@ -71,9 +72,9 @@ class GaussDiffParam(Parameter):
     """
 
     def __init__(self, gauss_diff: Tuple[float, float]):
-        # TODO mypy throws: Type application has too many types (1 expected)
-        # expects tuple[float]
-        super().__init__(LogPolParams.GAUSS_DIFF, Tuple[float, float])
+        # NOTE mypy throws: Argument 2 to "__init__" of "Parameter" has incompatible type "object";
+        # therefore weird casting of Tuple[float, float] to Type[Any]
+        super().__init__(LogPolParams.GAUSS_DIFF, cast(Type[Any], Tuple[float, float]))
         self.value = gauss_diff
 
 
@@ -354,7 +355,8 @@ class RecoveredRotationScalePhaseParam(Parameter):
 
     Notes
     -----
-    The errors are a lower estimate under ideal assumptions and can be much larger depending on the data.
+    The errors are a lower estimate under ideal assumptions and can be much
+    larger depending on the data.
 
     Attributes
     ----------
@@ -389,7 +391,8 @@ class RecoveredRotationParam(Parameter):
 
     Notes
     -----
-    The errors are a lower estimate under ideal assumptions and can be much larger depending on the data.
+    The errors are a lower estimate under ideal assumptions and can be much
+    larger depending on the data.
 
     Attributes
     ----------
@@ -417,7 +420,8 @@ class RecoveredScaleParam(Parameter):
 
     Notes
     -----
-    The errors are a lower estimate under ideal assumptions and can be much larger depending on the data.
+    The errors are a lower estimate under ideal assumptions and can be much
+    larger depending on the data.
 
     Attributes
     ----------
@@ -478,7 +482,8 @@ class RecoveredTranslationParam(Parameter):
 
     Notes
     -----
-    The errors are a lower estimate under ideal assumptions and can be much larger depending on the data.
+    The errors are a lower estimate under ideal assumptions and can be much
+    larger depending on the data.
 
     Attributes
     ----------

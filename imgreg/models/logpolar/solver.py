@@ -1,10 +1,14 @@
 """
-Image registration based on the log-polar transform.
+The log-polar transform based image registration solver.
 
 Author: Fabian A. Preiss
 """
 
+from typing import Optional
+
 import numpy as np
+
+from imgreg.models.logpolar.enums import LogPolParams
 from imgreg.models.logpolar.params import (
     BoundsParam,
     FourierModParam,
@@ -28,10 +32,6 @@ from imgreg.models.logpolar.params import (
     WindowWeightParam,
 )
 from imgreg.util.solver import Solver
-from imgreg.models.logpolar.enums import LogPolParams
-from typing import Optional
-
-from PIL import Image
 
 
 # NOTE: try applying exponential filter before Gaussdiff

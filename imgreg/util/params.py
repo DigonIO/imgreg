@@ -8,10 +8,9 @@ from __future__ import annotations
 
 import types
 from enum import Enum
-from typing import Any, Callable, Dict, Optional, Set, Tuple, Union, Type, cast
+from typing import Any, Callable, Dict, Optional, Set, Tuple, Type, Union, cast
 
 import matplotlib.pyplot as plt
-import types
 from typeguard import check_type
 
 
@@ -131,7 +130,7 @@ class Parameter:
             raise ParameterError("Cannot overwrite constant parameter.")
         self.__value = value
 
-    def clear(self, clear_descendants=True):
+    def clear(self, clear_descendants=True) -> None:
         r"""Clear the value stored in this and dependent `Parameter`\ s."""
         if clear_descendants:
             self.__clear_descendants()
@@ -148,7 +147,7 @@ class Parameter:
         r"""`Parameter`\ s with a child relation to this `Parameter`\ s instance."""
         return self.__children.copy()
 
-    def add_child(self, child: Parameter):
+    def add_child(self, child: Parameter) -> None:
         r"""Assign a Parameter a child relation"""
         if child.enum_id in self.__parents:
             raise ParameterError(
@@ -161,7 +160,7 @@ class Parameter:
         r"""`Parameter`\ s with a descendant relation to this `Parameter`\ s instance."""
         return self.__descendants.copy()
 
-    def add_descendant(self, descendant: Parameter):
+    def add_descendant(self, descendant: Parameter) -> None:
         r"""Assign a Parameter a child relation"""
         if descendant.enum_id in self.__parents:
             raise ParameterError(
@@ -169,7 +168,7 @@ class Parameter:
             )
         self.__descendants[descendant.enum_id] = descendant
 
-    def __clear_descendants(self):
+    def __clear_descendants(self) -> None:
         for descendant_enum_id in self.__descendants:
             self.__descendants[descendant_enum_id].clear(clear_descendants=False)
 

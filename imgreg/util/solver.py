@@ -4,23 +4,27 @@ Solvermodel primitives.
 Author: Fabian A. Preiss
 """
 from __future__ import annotations
+
+from enum import Enum
 from typing import (
-    Any,
     Callable,
     Dict,
-    Optional,
+    Hashable,
+    ItemsView,
     Iterable,
+    Optional,
     Sequence,
     Set,
     Union,
     cast,
 )
-from imgreg.util.params import Parameter, ImageParameter
-from imgreg.util.graph import DAGraph
-from enum import Enum
-import matplotlib.pyplot as plt
+
 import matplotlib.gridspec as gridspec
+import matplotlib.pyplot as plt
 from graphviz import Digraph
+
+from imgreg.util.graph import DAGraph
+from imgreg.util.params import ImageParameter, Parameter
 
 
 class SolverError(Exception):
@@ -35,7 +39,23 @@ def dependency_graph(parameters: Set[Parameter], invert=False) -> DAGraph:
             dep_graph[parameter] = {parent for parent in parameter.parents.values()}
         else:
             dep_graph[parameter] = {child for child in parameter.children.values()}
-    return DAGraph(dep_graph)
+    return DAGraph(cast(Dict[Hashable, Set[Hashable]], dep_graph))
+
+
+def dot_shape_func(parameter: Parameter) -> Dict[str, str]:
+    """
+    Generate the shape argument for a dot graph depending on the given Parameter
+
+    Parameters
+    ----------
+    parameter : Parameter
+        The parameter of a node
+    """
+    if isinstance(parameter, ImageParameter):
+        shape = "box"
+    else:
+        shape = "oval"
+    return {"shape": shape}
 
 
 class Solver:
@@ -87,10 +107,10 @@ class Solver:
         self.__idependency_graph = dependency_graph(
             set(self.__params.values()), invert=True
         )
-        for (
-            parameter,
-            ascendants,
-        ) in self.__idependency_graph.vertex_ascendants_dict.items():
+        for (parameter, ascendants,) in cast(
+            ItemsView[Parameter, Set[Parameter]],
+            self.__idependency_graph.vertex_ascendants_dict.items(),
+        ):
             for ascendant in ascendants:
                 parameter.add_descendant(ascendant)
 
@@ -161,23 +181,14 @@ class Solver:
         plt.show()
 
     def dot_graph(
-        self, node_args_func: Optional[Callable[[Parameter], Dict[str, str]]] = None
+        self,
+        node_args_func: Callable[[Parameter], Dict[str, str]] = dot_shape_func,
     ) -> Digraph:
         """Return a dot graph representation of the solver model."""
         vertex_parent_dict = self._get_dep_graph().vertex_parent_dict
-        return vertex_parent_dict_to_dot(vertex_parent_dict, node_args_func)
-
-
-def dot_args_box_img_func(parameter: Parameter) -> Dict[str, str]:
-    """
-    Generate the shape argument for a dot graph depending on the given Parameter
-
-    Parameters
-    ----------
-    parameter : Parameter
-        The parameter of a node
-    """
-    return {"shape": "box" if isinstance(parameter, ImageParameter) else "oval"}
+        return vertex_parent_dict_to_dot(
+            cast(Dict[Parameter, Set[Parameter]], vertex_parent_dict), node_args_func
+        )
 
 
 def vertex_parent_dict_to_dot(

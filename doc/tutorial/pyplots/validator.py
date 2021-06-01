@@ -11,7 +11,7 @@ img = ImageMethods.compute_rts(ref_img, angle=2, translation=(6, 2))
 # Create the model:
 val = Validator(img, ref_img)
 
-# The `ImageParameter`\ s of the model have `matplotlib` support via the `display` function:
+# The ImageParameters of the model have matplotlib support via the display function:
 val.display([val.ABSOLUTE_DIFFERENCE_IMG, val.SQUARED_DIFFERENCE_IMG])
 
 # Increase the overlap to the reference image

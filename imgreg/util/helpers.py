@@ -4,13 +4,14 @@ Collection of useful helper functions in specific usecases
 Author: Fabian A. Preiss
 """
 from typing import Generator, Iterable, Sequence
+
 import numpy as np
 from PIL import Image
 
-from imgreg.util.solver import Solver
-from imgreg.util.methods import ImageMethods
 from imgreg.util.io import DirectoryView
+from imgreg.util.methods import ImageMethods
 from imgreg.util.params import ParameterError
+from imgreg.util.solver import Solver
 
 
 def image_file_gen(
@@ -51,7 +52,10 @@ def solver_gen(
         raise ParameterError(
             "Solver is expected to have the REF_IMG parameter set."
         ) from err
-    solver.MOD_IMG.value = next(image_file_g)
+    try:
+        solver.MOD_IMG.value = next(image_file_g)
+    except StopIteration:
+        pass
     yield solver
     for arr in image_file_g:
         solver.MOD_IMG.value = arr
@@ -135,8 +139,8 @@ def image_save_back_tf(
         )
         dest_img = Image.fromarray(dest_arr).convert("L")
         if i != len(fnames) - 1:
-            out_A = dest_path + "/" + fname.split(".")[0] + "_A.png"
-            dest_img.save(out_A)
+            out_a = dest_path + "/" + fname.split(".")[0] + "_A.png"
+            dest_img.save(out_a)
         if i != 0:
-            out_B = dest_path + "/" + fnames[i - 1].split(".")[0] + "_B.png"
-            dest_img.save(out_B)
+            out_b = dest_path + "/" + fnames[i - 1].split(".")[0] + "_B.png"
+            dest_img.save(out_b)

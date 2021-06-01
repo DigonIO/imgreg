@@ -4,17 +4,19 @@ A validator for image similarity.
 Author: Fabian A. Preiss
 """
 
+from typing import Optional
+
 import numpy as np
+
+from imgreg.models.validator.enums import ValidatorParams
 from imgreg.models.validator.params import (
-    ImageParam,
-    RefImageParam,
-    NormRelL2Param,
     AbsoluteDifferenceParam,
+    ImageParam,
+    NormRelL2Param,
+    RefImageParam,
     SquaredDifferenceParam,
 )
 from imgreg.util.solver import Solver
-from imgreg.models.validator.enums import ValidatorParams
-from typing import Optional
 
 
 class Validator(Solver):
@@ -55,14 +57,14 @@ class Validator(Solver):
 
     Calculate the relative norm of difference between the images.
 
-    >>> val.NORM_REL_L2.value
-    0.4875079942792268
+    >>> val.NORM_REL_L2.value # doctest:+ELLIPSIS
+    0.4875079942792...
 
     Note how this value approaches zero, as the image increase in their overlap:
 
     >>> val.IMG.value = ImageMethods.compute_rts(ref_img, angle=1, translation=(1,2))
-    >>> val[ValidatorParams.NORM_REL_L2].value
-    0.3942652180108632
+    >>> val[ValidatorParams.NORM_REL_L2].value # doctest:+ELLIPSIS
+    0.3942652180108...
     """
 
     def __init__(

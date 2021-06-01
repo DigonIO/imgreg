@@ -1,29 +1,31 @@
 """
-Image registration based on the radon transform.
+The radon transform based image registration solver.
 
 Author: Fabian A. Preiss
 """
 
+from typing import Optional
+
 import numpy as np
+
+from imgreg.models.radon.enums import RadonParams
 from imgreg.models.radon.params import (
-    RefImageParam,
-    ModImageParam,
+    AngleSelectParam,
     AngularPrecisionParam,
     ExponentialFilterSignalNoiseParam,
-    ThetaParam,
-    UpsamplingParam,
-    RefRotationParam,
+    ModImageParam,
     ModRotationParam,
-    RotationCandidateParam,
-    AngleSelectParam,
     RecoveredRotationParam,
     RecoveredRotParam,
-    RecoveredTranslationParam,
     RecoveredRotTrParam,
+    RecoveredTranslationParam,
+    RefImageParam,
+    RefRotationParam,
+    RotationCandidateParam,
+    ThetaParam,
+    UpsamplingParam,
 )
-from imgreg.models.radon.enums import RadonParams
 from imgreg.util.solver import Solver
-from typing import Optional
 
 
 class RadonSolver(Solver):
@@ -31,8 +33,6 @@ class RadonSolver(Solver):
     Implements an image registration model based on the radon transform.
 
     The model tries to reconstruct the difference of rotation and translation between two images.
-    The model is limited such, that due to the symmetry of the method it only considers
-    angles between 0 and 180 degrees. It will fail, if the rotation angle is larger.
 
     Parameters
     ----------
